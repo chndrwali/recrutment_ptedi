@@ -5,6 +5,7 @@ import Register from './Pages/Auth/Register';
 import Login from './Pages/Auth/Login';
 import { useContext } from 'react';
 import { AppContext } from './Context/AppContext';
+import Admin from './Pages/Admin';
 
 export default function App() {
   const { user, role } = useContext(AppContext);
@@ -26,7 +27,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/admin" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<Admin />} />
           </Route>
         </Routes>
       </BrowserRouter>
