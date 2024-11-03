@@ -3,7 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { AppContext } from '../Context/AppContext';
 
 const Layout = () => {
-  const { user, token, setUser, setToken } = useContext(AppContext);
+  const { user, token, setUser, setToken, role } = useContext(AppContext);
   const navigate = useNavigate()
   
   const handleLogout = async (e) => {
@@ -32,13 +32,18 @@ const Layout = () => {
     <>
       <header>
         <nav>
-          <Link to={'/'} className="nav-link">
+          {role === 'user' ? 
+          
+          <Link to={'/home'} className="nav-link">
             {' '}
             Beranda{' '}
           </Link>
+          : 
+          <>Admin</>
+          }
           {user ? (
             <div className='flex items-center space-x-4'>
-            <div>{user.email}</div>
+            <span className='text-white'>{user.email}</span>
             <form onSubmit={handleLogout}>
               <button className='nav-link'>Keluar</button>
             </form>

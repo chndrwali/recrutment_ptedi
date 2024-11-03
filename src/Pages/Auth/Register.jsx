@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -25,8 +26,9 @@ const Register = () => {
   
       if (data.errors) {
         setErrors(data.errors)
+        toast.error('Gagal daftar!')
       } else {
-        
+        toast.success('Berhasil daftar :D')
         navigate('/')
       }
     } catch (error) {

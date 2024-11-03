@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../Context/AppContext';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,8 +27,10 @@ const Login = () => {
       const data = await res.json();
 
       if (data.errors) {
+        toast.error('Gagal login!')
         setErrors(data.errors);
       } else {
+        toast.success('Berhasil login :D')
         localStorage.setItem('token', data.token);
         setToken(data.token);
         navigate('/home');
